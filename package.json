@@ -1,0 +1,37 @@
+{
+  "name": "bazi-solar-time",
+  "version": "1.0.0",
+  "description": "True solar time (真太阳时) in JavaScript: historical IANA offsets, daylight saving, longitude correction and the equation of time, with no dependencies.",
+  "type": "module",
+  "main": "./src/true-solar-time.js",
+  "types": "./src/true-solar-time.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/true-solar-time.d.ts",
+      "import": "./src/true-solar-time.js",
+      "default": "./src/true-solar-time.js"
+    }
+  },
+  "files": [
+    "src",
+    "test-vectors.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test.mjs"
+  },
+  "keywords": [
+    "bazi",
+    "four pillars",
+    "true solar time",
+    "chinese astrology",
+    "equation of time",
+    "timezone",
+    "iana"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

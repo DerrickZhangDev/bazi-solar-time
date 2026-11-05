@@ -1,0 +1,386 @@
+[
+  {
+    "id": "taipei-1990-02-04-1000",
+    "note": "The worked example on bazipattern.com/methodology. Correction is equation of time only, since no longitude is given.",
+    "input": {
+      "wall": {
+        "year": 1990,
+        "month": 2,
+        "day": 4,
+        "hour": 10,
+        "minute": 0
+      },
+      "timeZone": "Asia/Taipei",
+      "longitude": null
+    },
+    "expected": {
+      "utc": "1990-02-04T02:00:00.000Z",
+      "wall": {
+        "year": 1990,
+        "month": 2,
+        "day": 4,
+        "hour": 9,
+        "minute": 46,
+        "second": 23
+      },
+      "tzOffsetMinutes": 480,
+      "standardOffsetMinutes": 480,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -13.614,
+      "longitudeCorrectionMinutes": 0,
+      "correctionMinutes": -13.614
+    }
+  },
+  {
+    "id": "taipei-1990-02-04-1000-lon",
+    "note": "Same instant with the real longitude. Taipei sits ~0.5 degrees east of the UTC+8 meridian.",
+    "input": {
+      "wall": {
+        "year": 1990,
+        "month": 2,
+        "day": 4,
+        "hour": 10,
+        "minute": 0
+      },
+      "timeZone": "Asia/Taipei",
+      "longitude": 121.5
+    },
+    "expected": {
+      "utc": "1990-02-04T02:00:00.000Z",
+      "wall": {
+        "year": 1990,
+        "month": 2,
+        "day": 4,
+        "hour": 9,
+        "minute": 52,
+        "second": 23
+      },
+      "tzOffsetMinutes": 480,
+      "standardOffsetMinutes": 480,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -13.614,
+      "longitudeCorrectionMinutes": 6,
+      "correctionMinutes": -7.614
+    }
+  },
+  {
+    "id": "shanghai-1988-06-15-1200",
+    "note": "China ran daylight saving 1986-1991. A birth in June 1988 must lose the extra hour, not gain it.",
+    "input": {
+      "wall": {
+        "year": 1988,
+        "month": 6,
+        "day": 15,
+        "hour": 12,
+        "minute": 0
+      },
+      "timeZone": "Asia/Shanghai",
+      "longitude": 121.47
+    },
+    "expected": {
+      "utc": "1988-06-15T03:00:00.000Z",
+      "wall": {
+        "year": 1988,
+        "month": 6,
+        "day": 15,
+        "hour": 11,
+        "minute": 5,
+        "second": 38
+      },
+      "tzOffsetMinutes": 540,
+      "standardOffsetMinutes": 480,
+      "daylightSavingMinutes": -60,
+      "equationOfTimeMinutes": -0.241,
+      "longitudeCorrectionMinutes": 5.88,
+      "correctionMinutes": -54.361
+    }
+  },
+  {
+    "id": "shanghai-1988-12-15-1200",
+    "note": "Same zone, same year, outside the DST window — the control case for the row above.",
+    "input": {
+      "wall": {
+        "year": 1988,
+        "month": 12,
+        "day": 15,
+        "hour": 12,
+        "minute": 0
+      },
+      "timeZone": "Asia/Shanghai",
+      "longitude": 121.47
+    },
+    "expected": {
+      "utc": "1988-12-15T04:00:00.000Z",
+      "wall": {
+        "year": 1988,
+        "month": 12,
+        "day": 15,
+        "hour": 12,
+        "minute": 10,
+        "second": 21
+      },
+      "tzOffsetMinutes": 480,
+      "standardOffsetMinutes": 480,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": 4.475,
+      "longitudeCorrectionMinutes": 5.88,
+      "correctionMinutes": 10.355
+    }
+  },
+  {
+    "id": "new-york-1990-01-15-1200",
+    "note": "West of Greenwich in winter. The standard offset is the smaller of January and July, not the smaller absolute value.",
+    "input": {
+      "wall": {
+        "year": 1990,
+        "month": 1,
+        "day": 15,
+        "hour": 12,
+        "minute": 0
+      },
+      "timeZone": "America/New_York",
+      "longitude": -74
+    },
+    "expected": {
+      "utc": "1990-01-15T17:00:00.000Z",
+      "wall": {
+        "year": 1990,
+        "month": 1,
+        "day": 15,
+        "hour": 11,
+        "minute": 55,
+        "second": 22
+      },
+      "tzOffsetMinutes": -300,
+      "standardOffsetMinutes": -300,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -8.629,
+      "longitudeCorrectionMinutes": 4,
+      "correctionMinutes": -4.629
+    }
+  },
+  {
+    "id": "new-york-1990-07-15-1200",
+    "note": "Same place in summer: DST in effect, standard meridian unchanged.",
+    "input": {
+      "wall": {
+        "year": 1990,
+        "month": 7,
+        "day": 15,
+        "hour": 12,
+        "minute": 0
+      },
+      "timeZone": "America/New_York",
+      "longitude": -74
+    },
+    "expected": {
+      "utc": "1990-07-15T16:00:00.000Z",
+      "wall": {
+        "year": 1990,
+        "month": 7,
+        "day": 15,
+        "hour": 10,
+        "minute": 58,
+        "second": 13
+      },
+      "tzOffsetMinutes": -240,
+      "standardOffsetMinutes": -300,
+      "daylightSavingMinutes": -60,
+      "equationOfTimeMinutes": -5.781,
+      "longitudeCorrectionMinutes": 4,
+      "correctionMinutes": -61.781
+    }
+  },
+  {
+    "id": "urumqi-1985-02-20-0010",
+    "note": "Urumqi keeps UTC+8 while sitting at 87.6E — nearly three hours of longitude correction, and the corrected time falls on the previous day.",
+    "input": {
+      "wall": {
+        "year": 1985,
+        "month": 2,
+        "day": 20,
+        "hour": 0,
+        "minute": 10
+      },
+      "timeZone": "Asia/Shanghai",
+      "longitude": 87.6
+    },
+    "expected": {
+      "utc": "1985-02-19T16:10:00.000Z",
+      "wall": {
+        "year": 1985,
+        "month": 2,
+        "day": 19,
+        "hour": 21,
+        "minute": 46,
+        "second": 18
+      },
+      "tzOffsetMinutes": 480,
+      "standardOffsetMinutes": 480,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -14.1,
+      "longitudeCorrectionMinutes": -129.6,
+      "correctionMinutes": -143.7
+    }
+  },
+  {
+    "id": "kashgar-2000-09-01-0600",
+    "note": "The most extreme correction in China: 75.99E against a UTC+8 meridian.",
+    "input": {
+      "wall": {
+        "year": 2000,
+        "month": 9,
+        "day": 1,
+        "hour": 6,
+        "minute": 0
+      },
+      "timeZone": "Asia/Shanghai",
+      "longitude": 75.99
+    },
+    "expected": {
+      "utc": "2000-08-31T22:00:00.000Z",
+      "wall": {
+        "year": 2000,
+        "month": 9,
+        "day": 1,
+        "hour": 3,
+        "minute": 3,
+        "second": 35
+      },
+      "tzOffsetMinutes": 480,
+      "standardOffsetMinutes": 480,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -0.373,
+      "longitudeCorrectionMinutes": -176.04,
+      "correctionMinutes": -176.413
+    }
+  },
+  {
+    "id": "london-1941-06-01-1200",
+    "note": "British Double Summer Time: from May 1941 London ran at UTC+2, so the standard offset is UTC+1 and an hour has to come back out.",
+    "input": {
+      "wall": {
+        "year": 1941,
+        "month": 6,
+        "day": 1,
+        "hour": 12,
+        "minute": 0
+      },
+      "timeZone": "Europe/London",
+      "longitude": -0.13
+    },
+    "expected": {
+      "utc": "1941-06-01T10:00:00.000Z",
+      "wall": {
+        "year": 1941,
+        "month": 6,
+        "day": 1,
+        "hour": 10,
+        "minute": 2,
+        "second": 2
+      },
+      "tzOffsetMinutes": 120,
+      "standardOffsetMinutes": 60,
+      "daylightSavingMinutes": -60,
+      "equationOfTimeMinutes": 2.568,
+      "longitudeCorrectionMinutes": -60.52,
+      "correctionMinutes": -117.952
+    }
+  },
+  {
+    "id": "sydney-2020-04-05-0230",
+    "note": "Half an hour into the autumn overlap, when 02:00-03:00 happens twice. The two-pass resolver must land on one of them deterministically.",
+    "input": {
+      "wall": {
+        "year": 2020,
+        "month": 4,
+        "day": 5,
+        "hour": 2,
+        "minute": 30
+      },
+      "timeZone": "Australia/Sydney",
+      "longitude": 151.21
+    },
+    "expected": {
+      "utc": "2020-04-04T16:30:00.000Z",
+      "wall": {
+        "year": 2020,
+        "month": 4,
+        "day": 5,
+        "hour": 2,
+        "minute": 31,
+        "second": 42
+      },
+      "tzOffsetMinutes": 600,
+      "standardOffsetMinutes": 600,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -3.127,
+      "longitudeCorrectionMinutes": 4.84,
+      "correctionMinutes": 1.713
+    }
+  },
+  {
+    "id": "reykjavik-2000-01-01-0000",
+    "note": "UTC+0 all year, 21.9 degrees west of the meridian, at the turn of the year.",
+    "input": {
+      "wall": {
+        "year": 2000,
+        "month": 1,
+        "day": 1,
+        "hour": 0,
+        "minute": 0
+      },
+      "timeZone": "Atlantic/Reykjavik",
+      "longitude": -21.9
+    },
+    "expected": {
+      "utc": "2000-01-01T00:00:00.000Z",
+      "wall": {
+        "year": 1999,
+        "month": 12,
+        "day": 31,
+        "hour": 22,
+        "minute": 29,
+        "second": 29
+      },
+      "tzOffsetMinutes": 0,
+      "standardOffsetMinutes": 0,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -2.904,
+      "longitudeCorrectionMinutes": -87.6,
+      "correctionMinutes": -90.504
+    }
+  },
+  {
+    "id": "boston-1901-03-01-0800",
+    "note": "The oldest year the calculator accepts. Pre-standard-time US offsets are in the IANA history.",
+    "input": {
+      "wall": {
+        "year": 1901,
+        "month": 3,
+        "day": 1,
+        "hour": 8,
+        "minute": 0
+      },
+      "timeZone": "America/New_York",
+      "longitude": -71.06
+    },
+    "expected": {
+      "utc": "1901-03-01T13:00:00.000Z",
+      "wall": {
+        "year": 1901,
+        "month": 3,
+        "day": 1,
+        "hour": 8,
+        "minute": 2,
+        "second": 51
+      },
+      "tzOffsetMinutes": -300,
+      "standardOffsetMinutes": -300,
+      "daylightSavingMinutes": 0,
+      "equationOfTimeMinutes": -12.903,
+      "longitudeCorrectionMinutes": 15.76,
+      "correctionMinutes": 2.857
+    }
+  }
+]
