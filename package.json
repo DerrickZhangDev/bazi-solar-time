@@ -31,6 +31,11 @@
     "iana"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DerrickZhangDev/bazi-solar-time.git"
+  },
+  "homepage": "https://bazipattern.com/true-solar-time",
   "engines": {
     "node": ">=18"
   }
